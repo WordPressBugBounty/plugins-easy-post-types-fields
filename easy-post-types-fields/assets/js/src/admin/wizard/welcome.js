@@ -72,6 +72,7 @@ class Welcome extends Component {
 						as="h2"
 						size="20"
 						lineHeight="28px"
+						weight="bold"
 					>
 						{ isEmpty( step.heading )
 							? sprintf(
@@ -172,14 +173,43 @@ class Welcome extends Component {
 						style={ { backgroundColor: '#f6f7f7' } }
 						justify="center"
 					>
-						<Button
-							isPrimary
-							isBusy={ loading }
-							disabled={ loading }
-							onClick={ () => this.props.goToNextStep() }
-						>
-							{ __( 'Create a custom post type' ) }
-						</Button>
+						<div style={{ display: 'flex', gap: '20px', justifyContent: 'center', width: '100%' }}>
+							<Card style={{ borderRadius: '0', backgroundColor: 'white', padding: '15px', minWidth: '330px' }}>
+								<Text variant="title.small" as="h3" style={{ fontWeight: 'bold', fontSize: '17px', marginBottom: '10px' }}>
+									{ __( 'Create a new post type' ) }
+								</Text>
+								<Text variant="body" as="p" style={{ marginBottom: '20px', color: '#666' }}>
+									{ __( 'I want to add a completely new type of content on my website. This will appear as a new section on the left hand side of the WordPress admin.' ) }
+								</Text>
+								<Button
+									isPrimary
+									isBusy={ loading }
+									disabled={ loading }
+									onClick={ () => this.props.goToNextStep() }
+								>
+									{ __( 'Create a post type' ) }
+								</Button>
+							</Card>
+
+							<Card style={{ borderRadius: '0', backgroundColor: 'white', padding: '15px', minWidth: '330px' }}>
+								<Text variant="title.small" as="h3" style={{ fontWeight: 'bold', fontSize: '17px', marginBottom: '10px' }}>
+									{ __( 'Add custom fields or taxonomies' ) }
+								</Text>
+								<Text variant="body" as="p" style={{ marginBottom: '20px', color: '#666' }}>
+									{ __( 'I want to add custom fields or taxonomies to an existing post type on my site (e.g. events, documents, or products).' ) }
+								</Text>
+								<Button
+									isPrimary
+									isBusy={ loading }
+									disabled={ loading }
+									onClick={ () => {
+										window.location.href = 'admin.php?page=ept_post_types&view=other';
+									} }
+								>
+									{ __( 'Add custom fields/taxonomies' ) }
+								</Button>
+							</Card>
+						</div>
 					</CardFooter>
 				</Card>
 			</div>
